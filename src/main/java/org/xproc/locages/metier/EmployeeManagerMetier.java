@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.xproc.locages.dao.entities.Employee;
 import org.xproc.locages.dao.repositories.EmployeeRepository;
 
+import java.util.List;
+
 @Service
 public class EmployeeManagerMetier implements EmployeeManager {
     @Autowired
@@ -62,6 +64,11 @@ public class EmployeeManagerMetier implements EmployeeManager {
     @Override
     public void saveEmployee(Employee existingEmployee) {
         // Implementation can be added if needed
+    }
+
+    @Override
+    public List<Employee> getAllEmployeesNoPage() {
+        return employeeRepository.findAll();
     }
 
 }

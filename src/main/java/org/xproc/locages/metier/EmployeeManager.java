@@ -5,6 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.xproc.locages.dao.entities.Employee
 ;
+
+import java.util.List;
+
 @Transactional
 public interface EmployeeManager {
     Employee addEmployee(Employee employee);
@@ -15,4 +18,6 @@ public interface EmployeeManager {
     boolean deleteEmployee(Integer id);
     Page<Employee> findByNbrCin(String keyword, Pageable pageable);
     void saveEmployee(Employee existingEmployee);
+
+    List<Employee> getAllEmployeesNoPage();
 }

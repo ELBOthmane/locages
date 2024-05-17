@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Update Employee</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+    <script src="webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+<div layout:fragment="content">
+    <div class="container" align="center">
+        <h2>Update Employee</h2>
+        <form action="/updateEmployee" method="post">
+            <input type="hidden" name="id" th:value="${employeeTobeUpdated.id}">
+            <div class="mb-3">
+                <label for="EmpCin" class="form-label">Employee CIN</label>
+                <input type="text" class="form-control w-50" id="EmpCin" name="EmpCin" th:value="${employee.EmpCin}">
+                <span class="text-danger" th:errors="${employeeTobeUpdated.EmpCin}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="NumTel" class="form-label">Phone Number</label>
+                <input type="text" class="form-control w-50" id="NumTel" name="NumTel" th:value="${employee.NumTel}">
+                <span class="text-danger" th:errors="${employeeTobeUpdated.NumTel}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="Name" class="form-label">Name</label>
+                <input type="text" class="form-control w-50" id="Name" name="Name" th:value="${employee.Name}">
+                <span class="text-danger" th:errors="${employeeTobeUpdated.Name}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="LastName" class="form-label">Last Name</label>
+                <input type="text" class="form-control w-50" id="LastName" name="LastName" th:value="${employee.LastName}">
+                <span class="text-danger" th:errors="${employeeTobeUpdated.LastName}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="Email" class="form-label">Email</label>
+                <input type="email" class="form-control w-50" id="Email" name="Email" th:value="${employee.Email}">
+                <span class="text-danger" th:errors="${employeeTobeUpdated.Email}"></span>
+            </div>
+            <button type="submit" class="btn btn-primary form-control w-50" value="Update">Update</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

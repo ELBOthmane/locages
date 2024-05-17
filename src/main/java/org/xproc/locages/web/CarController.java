@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.xproc.locages.dao.entities.Car;
+import org.xproc.locages.dao.entities.Client;
 import org.xproc.locages.metier.CarManagerMetier;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -17,12 +18,10 @@ import java.util.List;
 
 public class CarController {
 
-    private final CarManagerMetier carManager;
-
     @Autowired
-    public CarController(CarManagerMetier carManager) {
-        this.carManager = carManager;
-    }
+    private  CarManagerMetier carManager;
+
+
 
     @GetMapping("index")
     public String start(Model model) {
@@ -64,6 +63,11 @@ public class CarController {
         } else {
             return "error";
         }
+    }
+    @PostMapping("/updateCar")
+    public String updateClient(@ModelAttribute("clientTobeUpdated") Car car) {
+        carManager.updateCar(car);
+        return "redirect:index";
     }
     @PostMapping("/ajouter")
     public String ajouterCarAction(Model model,

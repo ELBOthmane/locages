@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Update Client</title>
+    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<div class="p-3 m-2">
+    <div class="card">
+        <div class="card-header">Update Client</div>
+        <div class="card-body">
+            <div class="form-group">
+                <form class="form-inline" action="/updateClient" method="post">
+                    <input class="form-control" type="hidden" name="id" th:value="${ClientTobeUpdated.getId()}">
+                    <div class="mb-3">
+                        <label for="NbrCin" class="form-label">Number CIN</label>
+                        <input class="form-control" id="NbrCin" name="NbrCin" type="text" th:value="${ClientTobeUpdated.nbrCin}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Name" class="form-label">Name</label>
+                        <input class="form-control" id="Name" name="Name" type="text" th:value="${ClientTobeUpdated.name}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="LastName" class="form-label">Last Name</label>
+                        <input class="form-control" id="LastName" name="LastName" type="text" th:value="${ClientTobeUpdated.lastName}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="PhoneNbr" class="form-label">Phone Number</label>
+                        <input class="form-control" id="PhoneNbr" name="PhoneNbr" type="text" th:value="${ClientTobeUpdated.phoneNbr}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">Email</label>
+                        <input class="form-control" id="Email" name="Email" type="email" th:value="${ClientTobeUpdated.email}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="DrvLNbr" class="form-label">Driver's License Number</label>
+                        <input class="form-control" id="DrvLNbr" name="DrvLNbr" type="text" th:value="${ClientTobeUpdated.drvLNbr}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="DrvLExpD" class="form-label">Driver's License Expiry Date</label>
+                        <input class="form-control" id="DrvLExpD" name="DrvLExpD" type="date" th:value="${ClientTobeUpdated.drvLExpD}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="Address" class="form-label">Address</label>
+                        <textarea class="form-control" id="Address" name="Address" maxlength="200" th:text="${ClientTobeUpdated.address}"></textarea>
+                    </div>
+                    <input class="btn btn-primary form-control" type="submit" value="Update">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

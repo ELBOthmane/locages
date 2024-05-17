@@ -9,6 +9,8 @@ import org.xproc.locages.dao.entities.Car;
 import org.xproc.locages.dao.entities.Client;
 import org.xproc.locages.dao.repositories.ClientRepository;
 
+import java.util.List;
+
 @Service
 public class ClientManagerMetier implements ClientManager {
 
@@ -64,4 +66,11 @@ public class ClientManagerMetier implements ClientManager {
     public void saveClient(Client existingClient) {
         // Implementation can be added if needed
     }
+
+    @Override
+    public List<Client> getAllClientsNoPage() {
+        return clientRepository.findAll();
+    }
+
+
 }
