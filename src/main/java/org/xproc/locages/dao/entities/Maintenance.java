@@ -3,6 +3,8 @@ package org.xproc.locages.dao.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate; // Updated import
+import java.time.LocalDateTime; // Updated import
 import java.util.Date;
 
 @Entity
@@ -13,11 +15,14 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Maintenance {
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String Type;
-    private Date date;
-    private Double MaintenancePrice;
+    private String type; // Updated variable name
+    private Date date; // Updated variable type
+    private Double maintenancePrice; // Updated variable name
+    private String description; // Updated variable name
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "Car_id") // This is the foreign key column in the Maintenance table
     private Car car;

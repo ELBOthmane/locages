@@ -5,6 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.xproc.locages.dao.entities.Reservation
         ;
+
+import java.util.List;
+
 @Transactional
 public interface ReservationManager {
     Reservation addReservation(Reservation reservation);
@@ -13,6 +16,8 @@ public interface ReservationManager {
     Reservation getReservationById(Integer id);
     Reservation updateReservation(Reservation reservation);
     boolean deleteReservation(Integer id);
-    Page<Reservation> findByReservationCode(String keyword, Pageable pageable);
+    Page<Reservation> findByDescription(String keyword, Pageable pageable);
     void saveReservation(Reservation existingReservation);
+
+    List<Reservation> getAllReservationsNoPage();
 }

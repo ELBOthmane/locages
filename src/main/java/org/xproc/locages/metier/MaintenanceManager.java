@@ -5,6 +5,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.xproc.locages.dao.entities.Maintenance
         ;
+
+import java.util.List;
+
 @Transactional
 public interface MaintenanceManager {
     Maintenance addMaintenance(Maintenance maintenance);
@@ -13,6 +16,8 @@ public interface MaintenanceManager {
     Maintenance getMaintenanceById(Integer id);
     Maintenance updateMaintenance(Maintenance maintenance);
     boolean deleteMaintenance(Integer id);
-    Page<Maintenance> findByType(String keyword, Pageable pageable);
+    Page<Maintenance> findByDescription(String keyword, Pageable pageable);
     void saveMaintenance(Maintenance existingMaintenance);
+    public void setCarId(Integer carId);
+    List<Maintenance> getAllMaintenancesNoPage();
 }

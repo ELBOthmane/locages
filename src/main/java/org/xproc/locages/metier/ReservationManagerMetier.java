@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.xproc.locages.dao.entities.Reservation;
 import org.xproc.locages.dao.repositories.ReservationRepository;
 
+import java.util.List;
+
 @Service
 public class ReservationManagerMetier implements ReservationManager {
     @Autowired
@@ -34,7 +36,7 @@ public class ReservationManagerMetier implements ReservationManager {
 
     @Override
     public Page<Reservation> searchReservations(String keyword, int page, int size) {
-        return reservationRepository.findByReservationCode(keyword, PageRequest.of(page, size));
+            return reservationRepository.findByDescription(keyword, PageRequest.of(page, size));
     }
 
 
@@ -55,13 +57,16 @@ public class ReservationManagerMetier implements ReservationManager {
     }
 
     @Override
-    public Page<Reservation> findByReservationCode(String keyword, Pageable pageable) {
-        return reservationRepository.findByReservationCode(keyword, pageable);
+    public Page<Reservation> findByDescription(String keyword, Pageable pageable) {
+        return reservationRepository.findByDescription(keyword, pageable);
     }
 
     @Override
     public void saveReservation(Reservation existingReservation) {
         // Implementation can be added if needed
     }
-
+    @Override
+    public List<Reservation> getAllReservationsNoPage() {
+        return reservationRepository.findAll();
+    }
 }

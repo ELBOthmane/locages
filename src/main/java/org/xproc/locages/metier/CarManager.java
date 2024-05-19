@@ -16,7 +16,7 @@ import java.util.List;
         public Car getCarById(Integer id);
         public Car updateCar(Car Car);
         public boolean deleteCar(Integer id);
-
+        public Car getCarByNbrPlate(String nbrPlate);
         Page<Car> findByPlateNbr(String keyword, Pageable pageable);
 
 

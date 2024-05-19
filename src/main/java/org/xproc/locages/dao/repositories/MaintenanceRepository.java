@@ -7,5 +7,5 @@ import org.xproc.locages.dao.entities.Employee;
 import org.xproc.locages.dao.entities.Maintenance;
 
 public interface MaintenanceRepository extends JpaRepository<Maintenance,Integer> {
-    Page<Maintenance> findByType(String keyword, Pageable pageable);
+    Page<Maintenance> findByDescription(String keyword, Pageable pageable);
 }

@@ -33,7 +33,7 @@ public class CarManagerMetier implements CarManager {
 
     @Override
     public Page<Car> searchCar(String keyword, int page, int size) {
-        return carRepository.findByNbrPlate(keyword,  PageRequest.of(page, size));
+        return carRepository.findByNbrPlate(keyword, PageRequest.of(page, size));
     }
 
     @Override
@@ -41,15 +41,17 @@ public class CarManagerMetier implements CarManager {
         return null;
     }
 
-//    @Override
-//    public List<Car> getByKeyword(String keyword) {
-//        return carRepository.findByNbrPlate(keyword);
-//    }
-
     @Override
     public Car getCarById(Integer id) {
         return carRepository.findById(Long.valueOf(id)).orElse(null);
     }
+
+//    @Override
+//    public Car getCarByNbrPlate(String nbrPlate) {
+//        return carRepository.findByNbrPlate(nbrPlate,);
+//    }
+
+
 
     @Override
     public Car updateCar(Car car) {
@@ -67,14 +69,12 @@ public class CarManagerMetier implements CarManager {
     }
 
     @Override
+    public Car getCarByNbrPlate(String nbrPlate) {
+        return null;
+    }
+
+    @Override
     public Page<Car> findByPlateNbr(String keyword, Pageable pageable) {
         return carRepository.findByNbrPlate(keyword, pageable);
     }
-
-
-
-//    @Override
-//    public void saveCar(Car existingCar) {
-//        // Implementation can be added if needed
-//    }
 }

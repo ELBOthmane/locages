@@ -1,35 +1,92 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>Update Car</title>
+    <title>Add Reservation</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
 <body>
+    <div class="container" align="center">
+        <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/032/752/217/small_2x/super-car-logo-icon-ai-generative-free-png.png" class="h-8" alt="locages-logo" />
 
-<div class="p-3 m-2">
-    <div class="card">
-        <div class="card-header">Update Car</div>
-        <div class="card-body">
-            <div class="form-group">
-                <form action="/updateCar" method="post">
-                    <input class="form-control" type="hidden" name="id" th:value="${carTobeUpdated.getId()}">
-                    NbrPlate: <input class="form-control" name="NbrPlate" type="text" th:value="${carTobeUpdated.getNbrPlate()}">
-                    KmDriven: <input class="form-control" name="KmDriven" type="number" th:value="${carTobeUpdated.getKmDriven()}">
-                    Color: <input class="form-control" name="Color" type="text" th:value="${carTobeUpdated.getColor()}">
-                    RentPrice: <input class="form-control" name="RentPrice" type="number" th:value="${carTobeUpdated.getRentPrice()}">
-                    NbrSeats: <input class="form-control" name="NbrSeats" type="number" th:value="${carTobeUpdated.getNbrSeats()}">
-                    Type: <input class="form-control" name="Type" type="text" th:value="${carTobeUpdated.getType()}">
-                    Availability: <input class="form-control" name="Availability" type="checkbox" th:checked="${carTobeUpdated.isAvailability()}">
-                    Cmodel: <input class="form-control" name="Cmodel" type="text" th:value="${carTobeUpdated.getCmodel()}">
-                    Make: <input class="form-control" name="Make" type="text" th:value="${carTobeUpdated.getMake()}">
-                    CarPrice: <input class="form-control" name="CarPrice" type="number" th:value="${carTobeUpdated.getCarPrice()}">
-                    CarGains: <input class="form-control" name="CarGains" type="number" th:value="${carTobeUpdated.getCarGains()}">
-                    <br>
-                    <button class="btn btn-primary form-control" type="submit">Update</button>
-                </form>
+                </a>
+
+                <button data-collapse-toggle="navbar-multi-level" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-multi-level" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-multi-level">
+                    <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+                        <li>
+                            <a href="/" class="block py-2 px-3 text-gray-900 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
+                        </li>
+                        <li>
+                            <a href="/index" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Cars</a>
+                        </li>
+                        <li>
+                            <a href="/indexMaintenance" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Maintenances</a>
+                        </li>
+                        <li>
+                            <a href="/indexEmployee" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Employees</a>
+                        </li>
+                        <li>
+                            <a href="/indexClient" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Clients</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
+        </nav>
+        <h2>Add Reservation</h2>
+        <form action="/ajouterOnceR" th:object="${reservation}" method="post">
+
+            <div>
+                <label for="car">car:</label>
+                <select class="form-control w-50" id="car" name="carId" required>
+                    <option th:each="car : ${cars}" th:value="${car.id}" th:name="${car.id}" th:text="${car.nbrPlate}"></option>
+                </select>
+                <span class="text-danger" th:errors="${reservation.car.id}"></span>
+            </div>
+            <div>
+                <label for="client">client:</label>
+                <select class="form-control w-50" id="client" name="clientId" required>
+                    <option th:each="client : ${clients}" th:value="${client.id}" th:name="${client.id}" th:text="${client.nbrCin}"></option>
+                </select>
+                <span class="text-danger" th:errors="${reservation.client.id}"></span>
+            </div>
+
+            <div class="mb-3">
+                <label for="DateDebut" class="form-label">Start Date</label>
+                <input type="date" class="form-control w-50" id="DateDebut" name="DateDebut">
+                <span class="text-danger" th:errors="${reservation.dateDebut}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="LocHand" class="form-label">Location for Handing the Car</label>
+                <input type="text" class="form-control w-50" id="LocHand" name="LocHand">
+                <span class="text-danger" th:errors="${reservation.locHand}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="DateEnd" class="form-label">End Date</label>
+                <input type="date" class="form-control w-50" id="DateEnd" name="DateEnd">
+                <span class="text-danger" th:errors="${reservation.dateEnd}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="LocTB" class="form-label">Location to Take Back the Car</label>
+                <input type="text" class="form-control w-50" id="LocTB" name="LocTB">
+                <span class="text-danger" th:errors="${reservation.locTB}"></span>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control w-50" id="description" name="description" maxlength="100"></textarea>
+                <span class="text-danger" th:errors="${reservation.description}"></span>
+            </div>
+            <button type="submit" class="btn btn-primary form-control w-50" value="Add">Add</button>
+
+        </form>
     </div>
 </div>
 <footer class="bg-white dark:bg-gray-900">

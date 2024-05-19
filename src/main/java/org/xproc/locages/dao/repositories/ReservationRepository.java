@@ -8,5 +8,6 @@ import org.xproc.locages.dao.entities.Maintenance;
 import org.xproc.locages.dao.entities.Reservation;
 
 public interface ReservationRepository extends JpaRepository<Reservation,Integer> {
-    Page<Reservation> findByReservationCode(String keyword, Pageable pageable);
+
+    Page<Reservation> findByDescription(String keyword, Pageable pageable);
 }

@@ -6,8 +6,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.xproc.locages.dao.entities.Client;
 import org.xproc.locages.dao.entities.Maintenance;
 import org.xproc.locages.dao.repositories.MaintenanceRepository;
+
+import java.util.List;
 
 @Service
 public class MaintenanceManagerMetier implements MaintenanceManager {
@@ -28,13 +31,17 @@ public class MaintenanceManagerMetier implements MaintenanceManager {
     public Maintenance getMaintenanceById(Integer id) {
         return maintenanceRepository.findById(id).orElse(null);
     }
+    @Override
+    public List<Maintenance> getAllMaintenancesNoPage() {
+        return maintenanceRepository.findAll();
+    }
 
 
 
 
     @Override
     public Page<Maintenance> searchMaintenances(String keyword, int page, int size) {
-        return maintenanceRepository.findByType(keyword, PageRequest.of(page, size));
+        return maintenanceRepository.findByDescription(keyword, PageRequest.of(page, size));
     }
 
 
@@ -55,13 +62,19 @@ public class MaintenanceManagerMetier implements MaintenanceManager {
     }
 
     @Override
-    public Page<Maintenance> findByType(String keyword, Pageable pageable) {
-        return maintenanceRepository.findByType(keyword, pageable);
+    public Page<Maintenance> findByDescription(String keyword, Pageable pageable) {
+        return maintenanceRepository.findByDescription(keyword, pageable);
     }
 
     @Override
     public void saveMaintenance(Maintenance existingMaintenance) {
         // Implementation can be added if needed
     }
+
+    @Override
+    public void setCarId(Integer carId) {
+        return ;
+    }
+
 
 }
