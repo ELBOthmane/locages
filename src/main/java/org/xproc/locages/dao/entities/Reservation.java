@@ -3,6 +3,7 @@ package org.xproc.locages.dao.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -16,9 +17,9 @@ public class Reservation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private Date DateDebut;
+    private LocalDate DateDebut;
     private String LocHand;//location of handing the car
-    private Date DateEnd;
+    private LocalDate DateEnd;
     private String LocTB;//location to take back the car
     private String description;
     @ManyToOne(fetch = FetchType.LAZY)

@@ -37,6 +37,9 @@
                     <li>
                         <a href="/indexClient" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Clients</a>
                     </li>
+                    <li>
+                        <a href="/indexReservation" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Reservations</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -47,42 +50,42 @@
             <div class="mb-3">
                 <label for="NbrCin" class="form-label">Number CIN</label>
                 <input type="text" class="form-control w-50" id="NbrCin" name="NbrCin">
-                <span class="text-danger" th:errors="${client.NbrCin}"></span>
+                <span class="text-danger" th:errors="${client.nbrCin}"></span>
             </div>
             <div class="mb-3">
                 <label for="Name" class="form-label">Name</label>
                 <input type="text" class="form-control w-50" id="Name" name="Name">
-                <span class="text-danger" th:errors="${client.Name}"></span>
+                <span class="text-danger" th:errors="${client.name}"></span>
             </div>
             <div class="mb-3">
                 <label for="LastName" class="form-label">Last Name</label>
                 <input type="text" class="form-control w-50" id="LastName" name="LastName">
-                <span class="text-danger" th:errors="${client.LastName}"></span>
+                <span class="text-danger" th:errors="${client.lastName}"></span>
             </div>
             <div class="mb-3">
                 <label for="PhoneNbr" class="form-label">Phone Number</label>
                 <input type="text" class="form-control w-50" id="PhoneNbr" name="PhoneNbr">
-                <span class="text-danger" th:errors="${client.PhoneNbr}"></span>
+                <span class="text-danger" th:errors="${client.phoneNbr}"></span>
             </div>
             <div class="mb-3">
                 <label for="Email" class="form-label">Email</label>
                 <input type="email" class="form-control w-50" id="Email" name="Email">
-                <span class="text-danger" th:errors="${client.Email}"></span>
+                <span class="text-danger" th:errors="${client.email}"></span>
             </div>
             <div class="mb-3">
                 <label for="DrvLNbr" class="form-label">Driver's License Number</label>
                 <input type="text" class="form-control w-50" id="DrvLNbr" name="DrvLNbr">
-                <span class="text-danger" th:errors="${client.DrvLNbr}"></span>
+                <span class="text-danger" th:errors="${client.drvLNbr}"></span>
             </div>
             <div class="mb-3">
                 <label for="DrvLExpD" class="form-label">Driver's License Expiry Date</label>
                 <input type="date" class="form-control w-50" id="DrvLExpD" name="DrvLExpD">
-                <span class="text-danger" th:errors="${client.DrvLExpD}"></span>
+                <span class="text-danger" th:errors="${client.drvLExpD}"></span>
             </div>
             <div class="mb-3">
                 <label for="Address" class="form-label">Address</label>
                 <textarea class="form-control w-50" id="Address" name="Address" maxlength="200"></textarea>
-                <span class="text-danger" th:errors="${client.Address}"></span>
+                <span class="text-danger" th:errors="${client.address}"></span>
             </div>
             <button type="submit" class="btn btn-primary form-control w-50" value="Add">Add</button>
         </form>

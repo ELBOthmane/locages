@@ -40,6 +40,9 @@
                     <li>
                         <a href="/indexClient" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Clients</a>
                     </li>
+                    <li>
+                        <a href="/indexReservation" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Reservations</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -49,46 +52,58 @@
             <div class="mb-3">
                 <label for="NbrPlate" class="form-label">NbrPlate</label>
                 <input type="text" class="form-control w-50" id="NbrPlate" name="NbrPlate">
+                <span class="text-danger" th:errors="${car.nbrPlate}"></span>
             </div>
             <div class="mb-3">
                 <label for="KmDriven" class="form-label">Kilometers Driven</label>
                 <input type="number" class="form-control w-50" id="KmDriven" name="KmDriven">
+                <span class="text-danger" th:errors="${car.kmDriven}"></span>
             </div>
             <div class="mb-3">
                 <label for="Color" class="form-label">Color</label>
                 <input type="text" class="form-control w-50" id="Color" name="Color">
+                <span class="text-danger" th:errors="${car.color}"></span>
             </div>
             <div class="mb-3">
                 <label for="RentPrice" class="form-label">Rent Price</label>
                 <input type="number" class="form-control w-50" id="RentPrice" name="RentPrice">
+                <span class="text-danger" th:errors="${car.rentPrice}"></span>
             </div>
             <div class="mb-3">
                 <label for="NbrSeats" class="form-label">Number of Seats</label>
                 <input type="number" class="form-control w-50" id="NbrSeats" name="NbrSeats">
+                <span class="text-danger" th:errors="${car.nbrSeats}"></span>
             </div>
             <div class="mb-3">
                 <label for="Type" class="form-label">Type</label>
                 <input type="text" class="form-control w-50" id="Type" name="Type">
+                <span class="text-danger" th:errors="${car.type}"></span>
             </div>
             <div class="mb-3">
                 <label for="Availability" class="form-label">Availability</label>
                 <input type="checkbox" class="form-check-input" id="Availability" name="Availability">
+                <span class="text-danger" th:errors="${car.availability}"></span>
             </div>
             <div class="mb-3">
                 <label for="Cmodel" class="form-label">Model</label>
                 <textarea class="form-control w-50" id="Cmodel" name="Cmodel" maxlength="100"></textarea>
+                <span class="text-danger" th:errors="${car.cmodel}"></span>
             </div>
             <div class="mb-3">
                 <label for="Make" class="form-label">Make</label>
                 <input type="text" class="form-control w-50" id="Make" name="Make">
+                <span class="text-danger" th:errors="${car.make}"></span>
             </div>
             <div class="mb-3">
                 <label for="CarPrice" class="form-label">Car Price</label>
                 <input type="number" class="form-control w-50" id="CarPrice" name="CarPrice">
+                <span class="text-danger" th:errors="${car.carPrice}"></span>
+
             </div>
             <div class="mb-3">
                 <label for="CarGains" class="form-label">Car Gains</label>
                 <input type="number" class="form-control w-50" id="CarGains" name="CarGains">
+                <span class="text-danger" th:errors="${car.carGains}"></span>
             </div>
             <!-- Add more input fields for additional attributes if needed -->
             <button type="submit" class="btn btn-primary form-control w-50" value="Ajouter">Ajouter</button>

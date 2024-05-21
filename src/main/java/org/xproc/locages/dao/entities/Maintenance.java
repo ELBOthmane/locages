@@ -19,7 +19,7 @@ public class Maintenance {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String type; // Updated variable name
-    private Date date; // Updated variable type
+    private LocalDate date; // Updated variable type
     private Double maintenancePrice; // Updated variable name
     private String description; // Updated variable name
 

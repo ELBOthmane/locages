@@ -19,6 +19,6 @@ import java.util.List;
         public Car getCarByNbrPlate(String nbrPlate);
         Page<Car> findByPlateNbr(String keyword, Pageable pageable);
 
-
+        List<Car> getCarsByAvailability(boolean availability);
 //        void saveCar(Car existingCar);
 }

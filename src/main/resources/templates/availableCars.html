@@ -1,14 +1,153 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en" th:decorate="template">
+
+
 <head>
-    <meta charset="utf-8"/>
-    <title>Update Reservation</title>
-    <link rel="stylesheet" type="text/css" href="webjars/bootstrap/5.3.3/css/bootstrap.min.css"/>
-    <script src="webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <title>Car List</title>
+    <style>
+        /* Add your CSS styles here */
+
+
+        h2 {
+            color: #333;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 8px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .btn-delete {
+            background-color: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .btn-delete:hover {
+            background-color: darkred;
+        }
+
+        .btn-edit {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .btn-edit:hover {
+            background-color: darkgreen;
+        }
+
+        .btn-add {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-add:hover {
+            background-color: #0056b3;
+        }
+
+        /* Pagination styles */
+        .pagination {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+        }
+
+        .pagination li {
+            margin-right: 5px;
+        }
+
+        .pagination li a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .pagination li a:hover {
+            background-color: #f2f2f2;
+        }
+
+        .pagination .active a {
+            background-color: #007bff;
+            color: white;
+        }
+
+        /* Horizontal pagination */
+        .pagination.horizontal li {
+            display: inline-block;
+            margin-right: 5px;
+        }
+
+        .pagination.horizontal li a {
+            text-decoration: none;
+            color: #333;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .pagination.horizontal li a:hover {
+            background-color: #f2f2f2;
+        }
+
+        .pagination.horizontal .active a {
+            background-color: #007bff;
+            color: white;
+        }
+        nav img {
+            width: 12px; /* Adjust according to your preference */
+            height: 12px; /* Maintain aspect ratio */
+        }
+
+        /* Adjustments for buttons */
+        nav button {
+            width: 12px; /* Adjust according to your preference */
+            height: 12px; /* Adjust according to your preference */
+        }
+        .logo-img {
+            width: 120px; /* Adjust the width as needed */
+            height: 120px; /* Adjust the height as needed */
+        }
+    </style>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
 </head>
+
 <body>
-<div layout:fragment="content">
+<div th:fragment="content">
     <nav class="bg-white border-gray-200 dark:bg-gray-900 dark:border-gray-700">
         <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -46,39 +185,67 @@
             </div>
         </div>
     </nav>
-    <div class="container" align="center">
-        <h2>Update Reservation</h2>
-        <form action="/updateReservation" method="post">
-            <input type="hidden" name="id" th:value="${ReservationTobeUpdated.getId()}">
-            <div class="mb-3">
-                <label for="DateDebut" class="form-label">Start Date</label>
-                <input type="date" class="form-control w-50" id="DateDebut" name="DateDebut" th:value="${ReservationTobeUpdated.getDateDebut()}">
-                <span class="text-danger" th:errors="${ReservationTobeUpdated.getDateDebut()}"></span>
-            </div>
-            <div class="mb-3">
-                <label for="LocHand" class="form-label">Location for Handing the Car</label>
-                <input type="text" class="form-control w-50" id="LocHand" name="LocHand" th:value="${ReservationTobeUpdated.getLocHand()}">
-                <span class="text-danger" th:errors="${ReservationTobeUpdated.getLocHand()}"></span>
-            </div>
-            <div class="mb-3">
-                <label for="DateEnd" class="form-label">End Date</label>
-                <input type="date" class="form-control w-50" id="DateEnd" name="DateEnd" th:value="${ReservationTobeUpdated.getDateEnd()}">
-                <span class="text-danger" th:errors="${ReservationTobeUpdated.getDateEnd()}"></span>
-            </div>
-            <div class="mb-3">
-                <label for="LocTB" class="form-label">Location to Take Back the Car</label>
-                <input type="text" class="form-control w-50" id="LocTB" name="LocTB" th:value="${ReservationTobeUpdated.getLocTB()}">
-                <span class="text-danger" th:errors="${ReservationTobeUpdated.getLocTB()}"></span>
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control w-50" id="description" name="description" maxlength="100" th:text="${ReservationTobeUpdated.description}"></textarea>
-                <span class="text-danger" th:errors="${ReservationTobeUpdated.description}"></span>
-            </div>
-            <button type="submit" class="btn btn-primary form-control w-50" value="Update">Update</button>
-        </form>
+    <h2 style="margin-left: 44%">Available Cars</h2>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg" style="padding: 3%">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th>NbrPlate</th>
+                <th>KmDriven</th>
+                <th>Color</th>
+                <th>RentPrice</th>
+                <th>NbrSeats</th>
+                <th>Type</th>
+                <th>Cmodel</th>
+                <th>Make</th>
+                <th>CarPrice</th>
+                <th>CarGains</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="car : ${cars}">
+                <td th:text="${car.getNbrPlate()}"></td>
+                <td th:text="${car.getKmDriven()}"></td>
+                <td th:text="${car.getColor()}"></td>
+                <td th:text="${car.getRentPrice()}"></td>
+                <td th:text="${car.getNbrSeats()}"></td>
+                <td th:text="${car.getType()}"></td>
+                <td th:text="${car.getCmodel()}"></td>
+                <td th:text="${car.getMake()}"></td>
+                <td th:text="${car.getCarPrice()}"></td>
+                <td th:text="${car.getCarGains()}"></td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
+<!-- Pagination -->
+<nav aria-label="Page navigation example">
+    <ul class="pagination horizontal">
+        <li>
+            <a href="#" class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-gray-500 bg-white border border-e-0 border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Previous</a>
+        </li>
+        <li>
+            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">1</a>
+        </li>
+        <li>
+            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">2</a>
+        </li>
+        <li>
+            <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-8 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-gray-700 dark:bg-gray-700 dark:text-white">3</a>
+        </li>
+        <li>
+            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">4</a>
+        </li>
+        <li>
+            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">5</a>
+        </li>
+        <li>
+            <a href="#" class="flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Next</a>
+        </li>
+    </ul>
+</nav>
+
 <footer class="bg-white dark:bg-gray-900">
     <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
         <div class="md:flex md:justify-between">
@@ -165,4 +332,5 @@
 </footer>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
+
 </html>

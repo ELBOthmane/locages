@@ -37,6 +37,9 @@
                 <li>
                     <a href="/indexClient" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Clients</a>
                 </li>
+                <li>
+                    <a href="/indexReservation" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Reservations</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -47,39 +50,47 @@
         <div class="card-header">Update Client</div>
         <div class="card-body">
             <div class="form-group">
-                <form class="form-inline" action="/updateClient" method="post">
-                    <input class="form-control" type="hidden" name="id" th:value="${ClientTobeUpdated.getId()}">
+                <form class="form-inline" action="/updateClient"  method="post">
+                    <input class="form-control" type="hidden" name="id" th:value="${clientTobeUpdated.getId()}">
                     <div class="mb-3">
-                        <label for="NbrCin" class="form-label">Number CIN</label>
-                        <input class="form-control" id="NbrCin" name="NbrCin" type="text" th:value="${ClientTobeUpdated.nbrCin}">
+                        <label for="nbrCin" class="form-label">Cin</label>
+                        <input class="form-control" id="nbrCin" name="nbrCin" type="text" th:value="${clientTobeUpdated.getNbrCin()}">
+                        <span class="text-danger" th:errors="${clientTobeUpdated.nbrCin}"></span>
                     </div>
                     <div class="mb-3">
                         <label for="Name" class="form-label">Name</label>
-                        <input class="form-control" id="Name" name="Name" type="text" th:value="${ClientTobeUpdated.name}">
+                        <input class="form-control" id="Name" name="Name" type="text" th:value="${clientTobeUpdated.name}">
+                        <span class="text-danger" th:errors="${clientTobeUpdated.name}"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="LastName" class="form-label">Last Name</label>
-                        <input class="form-control" id="LastName" name="LastName" type="text" th:value="${ClientTobeUpdated.lastName}">
+                        <label for="LastName" class="form-label">Last name</label>
+                        <input  class="form-control w-50" id="LastName" name="LastName" type="text" th:value="${clientTobeUpdated.getLastName()}">
+                        <span class="text-danger" th:errors="${clientTobeUpdated.lastName}"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="PhoneNbr" class="form-label">Phone Number</label>
-                        <input class="form-control" id="PhoneNbr" name="PhoneNbr" type="text" th:value="${ClientTobeUpdated.phoneNbr}">
+                        <label for="PhoneNbr" class="form-label">Phone nmbr</label>
+                        <input type="number" class="form-control w-50" id="PhoneNbr" name="PhoneNbr" th:value="${clientTobeUpdated.getPhoneNbr()}">
+                        <span class="text-danger" th:errors="${clientTobeUpdated.phoneNbr}"></span>
                     </div>
                     <div class="mb-3">
                         <label for="Email" class="form-label">Email</label>
-                        <input class="form-control" id="Email" name="Email" type="email" th:value="${ClientTobeUpdated.email}">
+                        <input type="text" class="form-control w-50" id="Email" name="Email" th:value="${clientTobeUpdated.getEmail()}">
+                        <span class="text-danger" th:errors="${clientTobeUpdated.email}"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="DrvLNbr" class="form-label">Driver's License Number</label>
-                        <input class="form-control" id="DrvLNbr" name="DrvLNbr" type="text" th:value="${ClientTobeUpdated.drvLNbr}">
+                        <label for="DrvLNbr" class="form-label">driver licence number</label>
+                        <input type="text" class="form-control w-50" id="DrvLNbr" name="DrvLNbr" th:value="${clientTobeUpdated.getDrvLNbr()}">
+                        <span class="text-danger" th:errors="${clientTobeUpdated.drvLNbr}"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="DrvLExpD" class="form-label">Driver's License Expiry Date</label>
-                        <input class="form-control" id="DrvLExpD" name="DrvLExpD" type="date" th:value="${ClientTobeUpdated.drvLExpD}">
+                        <label for="DrvLExpD" class="form-label">Licence expiration date</label>
+                        <input type="date" class="form-control w-50" id="DrvLExpD" name="DrvLExpD" th:value="${clientTobeUpdated.getDrvLExpD()}">
+                        <span class="text-danger" th:errors="${clientTobeUpdated.drvLExpD}"></span>
                     </div>
                     <div class="mb-3">
-                        <label for="Address" class="form-label">Address</label>
-                        <textarea class="form-control" id="Address" name="Address" maxlength="200" th:text="${ClientTobeUpdated.address}"></textarea>
+                        <label for="Address" class="form-label">address</label>
+                        <input type="text" class="form-control w-50" id="Address" name="Address" th:value="${clientTobeUpdated.getAddress()}">
+                        <span class="text-danger" th:errors="${clientTobeUpdated.address}"></span>
                     </div>
                     <input class="btn btn-primary form-control" type="submit" value="Update">
                 </form>

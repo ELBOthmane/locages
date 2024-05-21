@@ -77,4 +77,10 @@ public class CarManagerMetier implements CarManager {
     public Page<Car> findByPlateNbr(String keyword, Pageable pageable) {
         return carRepository.findByNbrPlate(keyword, pageable);
     }
+
+
+    @Override
+    public List<Car> getCarsByAvailability(boolean availability) {
+        return carRepository.findByAvailability(availability);
+    }
 }

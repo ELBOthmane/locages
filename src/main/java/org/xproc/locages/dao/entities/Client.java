@@ -4,6 +4,7 @@ package org.xproc.locages.dao.entities;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -18,14 +19,14 @@ public class Client {
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String NbrCin;
-    private String Name;
-    private String LastName;
-    private int PhoneNbr;
-    private String Email;
-    private String DrvLNbr;
-    private Date DrvLExpD;
-    private String Address;
+    private String nbrCin;
+    private String name;
+    private String lastName;
+    private int phoneNbr;
+    private String email;
+    private String drvLNbr;
+    private LocalDate drvLExpD;
+    private String address;
 
 }
 

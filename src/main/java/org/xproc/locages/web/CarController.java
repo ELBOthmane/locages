@@ -36,8 +36,25 @@ public class CarController {
     public String ajouterCar(Model model,
                              @Valid Car car,
                              BindingResult bindingResult) {
+        double carGains =  car.getCarPrice()*(-1) ;
+        car.setCarGains(carGains);
         carManager.addCar(car);
         return "redirect:index";
+    }
+
+    @GetMapping("/availableCars")
+    public String showCarList(Model model) {
+        List<Car> cars = carManager.getCarsByAvailability(true);
+        model.addAttribute("cars", cars);
+
+        return "availableCars";
+    }
+    @GetMapping("/notavailableCars")
+    public String showCarListn(Model model) {
+        List<Car> cars = carManager.getCarsByAvailability(false);
+        model.addAttribute("cars", cars);
+
+        return "notavailableCars";
     }
 
 

@@ -3,8 +3,7 @@ package org.xproc.locages.metier;
 import jakarta.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.xproc.locages.dao.entities.Employee
-;
+import org.xproc.locages.dao.entities.Employee;
 
 import java.util.List;
 

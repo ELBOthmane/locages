@@ -38,6 +38,9 @@
                 <li>
                     <a href="/indexClient" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Clients</a>
                 </li>
+                <li>
+                    <a href="/indexReservation" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Reservations</a>
+                </li>
             </ul>
         </div>
     </div>
@@ -49,30 +52,30 @@
         <div class="card-body">
             <div class="form-group">
                 <form class="form-inline" action="/updateMaintenance" method="post">
-                    <input class="form-control" type="hidden" name="id" th:value="${MaintenanceTobeUpdated.getId()}">
+                    <input class="form-control" type="hidden" name="id" th:value="${MaintenanceTobeUpdated.id}">
                     <div class="mb-3">
                         <label for="Type" class="form-label">Type</label>
-                        <input class="form-control" id="Type" name="Type" type="text" th:value="${MaintenanceTobeUpdated.getType()}">
+                        <input class="form-control" id="Type" name="Type" type="text" th:value="${MaintenanceTobeUpdated.type}">
                     </div>
                     <div class="mb-3">
                         <label for="Date" class="form-label">Date</label>
-                        <input class="form-control" id="Date" name="Date" type="date" th:value="${MaintenanceTobeUpdated.getDate()}">
+                        <input class="form-control" id="Date" name="Date" type="date" th:value="${MaintenanceTobeUpdated.date}">
                     </div>
                     <div class="mb-3">
                         <label for="MaintenancePrice" class="form-label">Maintenance Price</label>
-                        <input class="form-control" id="MaintenancePrice" name="MaintenancePrice" type="text" th:value="${MaintenanceTobeUpdated.getMaintenancePrice()}">
+                        <input class="form-control" id="MaintenancePrice" name="MaintenancePrice" type="text" th:value="${MaintenanceTobeUpdated.maintenancePrice}">
                     </div>
                     <div class="mb-3">
                         <label for="Description" class="form-label">Description</label>
-                        <textarea class="form-control" id="Description" name="Description" maxlength="200" th:text="${MaintenanceTobeUpdated.getDescription()}"></textarea>
+                        <textarea class="form-control" id="Description" name="Description" maxlength="200" th:text="${MaintenanceTobeUpdated.description}"></textarea>
                     </div>
                     <!-- Assuming you have a dropdown to select the Car -->
                     <div class="mb-3">
                         <label for="car" class="form-label">Car</label>
                         <select class="form-control w-50" id="car" name="carId" required>
-                            <option th:each="car : ${cars}" th:value="${car.id}" th:text="${car.nbrPlate}"></option>
+                            <option th:each="car : ${cars}" th:value="${car.id}" th:name="${car.id}" th:text="${car.nbrPlate}"></option>
                         </select>
-                        <span class="text-danger" th:errors="${maintenance.car.id}"></span>
+                        <span class="text-danger" th:errors="${MaintenanceTobeUpdated.car.id}"></span>
                     </div>
                     <input class="btn btn-primary form-control" type="submit" value="Update">
                 </form>

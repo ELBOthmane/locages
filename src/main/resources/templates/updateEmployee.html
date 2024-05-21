@@ -39,6 +39,9 @@
                     <li>
                         <a href="/indexClient" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Clients</a>
                     </li>
+                    <li>
+                        <a href="/indexReservation" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Reservations</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -49,28 +52,28 @@
             <input type="hidden" name="id" th:value="${employeeTobeUpdated.id}">
             <div class="mb-3">
                 <label for="EmpCin" class="form-label">Employee CIN</label>
-                <input type="text" class="form-control w-50" id="EmpCin" name="EmpCin" th:value="${employee.EmpCin}">
-                <span class="text-danger" th:errors="${employeeTobeUpdated.EmpCin}"></span>
+                <input type="text" class="form-control w-50" id="EmpCin" name="EmpCin" th:value="${employeeTobeUpdated.getEmpCin()}">
+                <span class="text-danger" th:errors="${employeeTobeUpdated.empCin}"></span>
             </div>
             <div class="mb-3">
                 <label for="NumTel" class="form-label">Phone Number</label>
-                <input type="text" class="form-control w-50" id="NumTel" name="NumTel" th:value="${employee.NumTel}">
-                <span class="text-danger" th:errors="${employeeTobeUpdated.NumTel}"></span>
+                <input type="text" class="form-control w-50" id="NumTel" name="NumTel" th:value="${employeeTobeUpdated.getNumTel()}">
+                <span class="text-danger" th:errors="${employeeTobeUpdated.numTel}"></span>
             </div>
             <div class="mb-3">
                 <label for="Name" class="form-label">Name</label>
-                <input type="text" class="form-control w-50" id="Name" name="Name" th:value="${employee.Name}">
-                <span class="text-danger" th:errors="${employeeTobeUpdated.Name}"></span>
+                <input type="text" class="form-control w-50" id="Name" name="Name" th:value="${employeeTobeUpdated.getName()}">
+                <span class="text-danger" th:errors="${employeeTobeUpdated.name}"></span>
             </div>
             <div class="mb-3">
                 <label for="LastName" class="form-label">Last Name</label>
-                <input type="text" class="form-control w-50" id="LastName" name="LastName" th:value="${employee.LastName}">
-                <span class="text-danger" th:errors="${employeeTobeUpdated.LastName}"></span>
+                <input type="text" class="form-control w-50" id="LastName" name="LastName" th:value="${employeeTobeUpdated.getLastName()}">
+                <span class="text-danger" th:errors="${employeeTobeUpdated.lastName}"></span>
             </div>
             <div class="mb-3">
                 <label for="Email" class="form-label">Email</label>
-                <input type="email" class="form-control w-50" id="Email" name="Email" th:value="${employee.Email}">
-                <span class="text-danger" th:errors="${employeeTobeUpdated.Email}"></span>
+                <input type="email" class="form-control w-50" id="Email" name="Email" th:value="${employeeTobeUpdated.getEmail()}">
+                <span class="text-danger" th:errors="${employeeTobeUpdated.email}"></span>
             </div>
             <button type="submit" class="btn btn-primary form-control w-50" value="Update">Update</button>
         </form>

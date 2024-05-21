@@ -16,6 +16,7 @@ import org.xproc.locages.metier.ClientManager;
 import org.xproc.locages.metier.ReservationManagerMetier;
 
 
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 @Controller
@@ -52,6 +53,12 @@ public class ReservationController {
         Client client = clientManager.getClientById(clientId);
         reservation.setCar(car);
         reservation.setClient(client);
+        // Calculate the number of days between DateDebut and DateEnd
+        long numberOfDays = ChronoUnit.DAYS.between(reservation.getDateDebut(), reservation.getDateEnd());
+
+        // Calculate carGains based on rentPrice and numberOfDays
+        double carGains =  (car.getRentPrice() * numberOfDays)+car.getCarGains() ;
+        car.setCarGains(carGains);
         reservationManager.addReservation(reservation);
         return "redirect:indexReservation";
     }

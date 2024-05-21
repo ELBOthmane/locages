@@ -10,6 +10,7 @@ import org.xproc.locages.dao.repositories.CarRepository;
 import org.xproc.locages.dao.repositories.MaintenanceRepository;
 import org.xproc.locages.metier.CarManager;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @SpringBootApplication
@@ -29,19 +30,6 @@ public class LocagesApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // Add a car
-        Car car = new Car();
-        car.setNbrPlate("ABC123");
-        car.setCmodel("fiesta");
-        car.setMake("ford");
-        car = carRepository.save(car);
-
-        // Add a maintenance record for the car
-        Maintenance maintenance = new Maintenance();
-        maintenance.setCar(car);
-        maintenance.setDescription("Oil change");
-        maintenance.setDate(new Date());
-        maintenanceRepository.save(maintenance);
 
         System.out.println("Car and maintenance record added.");
     }

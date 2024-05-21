@@ -46,7 +46,10 @@ public class MaintenanceController {
     public String ajouterMaintenance(Model model,
                                 @Valid Maintenance maintenance,
                                 BindingResult bindingResult ,@RequestParam Integer carId) {
+
         Car car = carManager.getCarById(carId);
+        double carGains =  car.getCarGains() - maintenance.getMaintenancePrice() ;
+        car.setCarGains(carGains);
         maintenance.setCar(car);
         maintenanceManager.addMaintenance(maintenance);
         return "redirect:indexMaintenance";
@@ -68,6 +71,7 @@ public class MaintenanceController {
         Maintenance maintenance =   maintenanceManager.getMaintenanceById(id);
         if (maintenance != null) {
             model.addAttribute("MaintenanceTobeUpdated", maintenance);
+            model.addAttribute("cars", carManager.getAllCarsNoPage());
             return "updateMaintenance";
         } else {
             return "error";
@@ -75,17 +79,10 @@ public class MaintenanceController {
     }
 
     @PostMapping("/updateMaintenance")
-    public String updateMaintenance(@ModelAttribute("MaintenanceTobeUpdated") Maintenance maintenance) {
+    public String updateMaintenance(@ModelAttribute("MaintenanceTobeUpdated") Maintenance maintenance,@RequestParam Integer carId) {
+        Car car = carManager.getCarById(carId);
+        maintenance.setCar(car);
         maintenanceManager.updateMaintenance(maintenance);
-        return "redirect:indexMaintenance";
-    }
-
-
-    @PostMapping("/ajouterMaintenance")
-    public String ajouterMaintenanceAction(Model model,
-                                      @Valid Maintenance maintenance,
-                                      BindingResult bindingResult) {
-        maintenanceManager.addMaintenance(maintenance);
         return "redirect:indexMaintenance";
     }
 

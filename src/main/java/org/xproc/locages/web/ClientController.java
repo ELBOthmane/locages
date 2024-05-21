@@ -57,7 +57,7 @@ public class ClientController {
     public String editClient(Model model, @RequestParam(name = "id") Integer id) {
         Client client =   clientManager.getClientById(id);
         if (client != null) {
-            model.addAttribute("ClientTobeUpdated", client);
+            model.addAttribute("clientTobeUpdated", client);
             return "updateClient";
         } else {
             return "error";

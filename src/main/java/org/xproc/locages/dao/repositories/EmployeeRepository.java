@@ -7,4 +7,5 @@ import org.xproc.locages.dao.entities.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
     Page<Employee> findByEmpCin(String keyword, Pageable pageable);
+    Page<Employee> findEmployeeByLogin(String keyword, Pageable pageable);
 }

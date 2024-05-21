@@ -17,17 +17,17 @@ import java.util.Set;
 public class Car {
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String NbrPlate;
-    private int KmDriven;
+    private String nbrPlate;
+    private int kmDriven;
     private String Color;
-    private Double RentPrice;
-    private int NbrSeats;
-    private String Type;
-    private boolean Availability;
-    private String Cmodel;
-    private String Make;
-    private double CarPrice;
-    private double CarGains;
+    private Double rentPrice;
+    private int nbrSeats;
+    private String type;
+    private boolean availability;
+    private String cmodel;
+    private String make;
+    private double carPrice;
+    private double carGains;
     @ManyToMany
     @JoinTable(
             name = "Car_Employee",
